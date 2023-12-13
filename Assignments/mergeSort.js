@@ -11,7 +11,7 @@ function mergeSort(arr) {
 
 function merge(left, right) {
   const mergedArr = [];
-  while (left.length && right.length) {
+  while (left.length != 0 && right.length != 0) {
     if (left[0] < right[0]) {
       mergedArr.push(left.shift());
     } else {
@@ -22,4 +22,4 @@ function merge(left, right) {
   return [...mergedArr, ...left, ...right];
 }
 
-console.log(mergeSort([3, 1, 8, 0, 3]));
+console.log(mergeSort([3, 1, 8, 0, 3, 12, 16, -3]));
