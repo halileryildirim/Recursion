@@ -1,29 +1,25 @@
-function mergeSort(array) {
-  if (array.length <= 1) {
-    return array;
+function mergeSort(arr) {
+  if (arr.length <= 1) {
+    return arr;
   } else {
-    const middle = Math.floor(array.length / 2);
-    const leftArray = mergeSort(array.splice(0, middle));
-    const rightArray = mergeSort(array.splice(middle));
-    return merge(leftArray, rightArray);
+    let mid = Math.floor(arr.length / 2);
+    let left = mergeSort(arr.slice(0, mid));
+    let right = mergeSort(arr.slice(mid));
+    return merge(left, right);
   }
 }
 
-function merge(leftArray, rightArray) {
-  //sol sağ array sıralı olacak. sol 1 ile sağ 1 kıyasla. küçük olanı ortağa aktarıp arrayden sil. küçük olan arrayde indexi arttır. bunu döngüye sok
-  const mergedArray = [];
-  do {
-    if (leftArray == []) {
-      mergedArray.push(rightArray.pop());
-    } else if (rightArray == []) {
-      mergedArray.push(leftArray.pop());
-    } else if (leftArray[0] <= rightArray[0]) {
-      mergedArray.push(leftArray.pop());
-    } else if (leftArray[0] > rightArray[0]) {
-      mergedArray.push(rightArray.pop());
+function merge(left, right) {
+  const mergedArr = [];
+  while (left.length && right.length) {
+    if (left[0] < right[0]) {
+      mergedArr.push(left.shift());
+    } else {
+      mergedArr.push(right.shift());
     }
-  } while (leftArray != [] && rightArray != []);
-  return mergedArray;
+  }
+
+  return [...mergedArr, ...left, ...right];
 }
 
-console.log(mergeSort([0, 1, 1, 2, 3, 5, 8, 13]));
+console.log(mergeSort([3, 1, 8, 0, 3]));
