@@ -2,7 +2,7 @@
 function fibs(n) {
   if (n > 0) {
     const array = [0];
-    for (let i = 1; i < n; ) {
+    for (let i = 1; i < n; i) {
       if (i == 1) {
         array[i] = 1;
         i++;
@@ -16,3 +16,4 @@ function fibs(n) {
 }
 
 console.log(fibs(8));
+console.log(fibs(7));
